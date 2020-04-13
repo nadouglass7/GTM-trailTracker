@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="css/mapbox.share.css" type="text/css" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 
-    <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.3/mapbox.uncompressed.js'></script>
+  	<!--    Mapbox Tile API JavaScript and CSS -->
+  	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
+  	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.css' rel='stylesheet' />
+
     <script src="ext/jquery.min.js"></script>
     <script src="ext/underscore.min.js"></script>
     <script src="ext/mapbox.share.js"></script>
@@ -39,12 +42,26 @@
         	
         </div>
     </div>
-
     <div id="map" class="map"></div>
-    
+    <!-- Map configuration -->
     <script>
+    	// mapbox access token
+    	mapboxgl.accessToken = 'pk.eyJ1IjoibmRjYXJ0b2dyYXBoeSIsImEiOiJjazh5OXNjdHUwdnMxM2tvZTBhazJ4dTZiIn0.-2UppD6gX6kfjsACEc5OyQ';
+	
+    	// ----------------------------------  
+    	// Initialize map
+    	// ----------------------------------  
+    	var map = new mapboxgl.Map({
+    	    container: 'map', // id of a div on your page, where the map will be inserted
+    	    style:'mapbox://styles/mapbox/outdoors-v11', // stylesheet location -- landcover
+    	    center: [-121.8170447,44.6742688], // starting position [lng, lat] eg. [-122.6788, 45.5212]
+    		zoom: 7,
+    		// minZoom: 4.5,
+    		// maxZoom: 6,
+    	    // maxBounds: [[74,15],[130,54]]
+    	    
+    	});	
     	
-    
     </script>
         
     

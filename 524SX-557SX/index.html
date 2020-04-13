@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Obama´s Twitter Inauguration</title>
+    <link rel="stylesheet" href="http://api.tiles.mapbox.com/mapbox.js/v0.6.3/mapbox.css" type="text/css" />
+    <link rel="stylesheet" href="fonts/fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/mapbox.share.css" type="text/css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+    <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.3/mapbox.uncompressed.js'></script>
+    <script src="ext/jquery.min.js"></script>
+    <script src="ext/underscore.min.js"></script>
+    <script src="ext/mapbox.share.js"></script>
+    <script src="tweetRace.js"></script>
+</head>
+<body>
+
+	<div id="header">
+        <h1>Obama´s Inaguration on Twitter</h1>
+    </div>
+    <div id="content">
+        <table id="counter">
+        	<tr>
+        		<th class='first'>All Tweets</th>
+        		<th class='second'>Second Tweets</th>
+        	</tr>
+           	<tr>
+           	    <td class='first'>--</td>
+        		<td class='second'>--</td>
+        	</tr>
+        </table>
+        <a href="#" id="stop">Pause</a>
+        <div id="about">
+            <h2>Follow the Inagurations Tweets</h2>
+            <p>This maps shows live Tweets from around the Inaguration site. We map all Tweets in Green and Tweets with the word "Obama" in Blue. </p>
+              <p>Forked from <a href="http://github.com/brunosan/Twitter-MapBox">this Mapbox repo</a>.</p>
+        	
+        </div>
+    </div>
+
+    <div id="map" class="map"></div>
+        
+    
+    <!-- Site configuration -->
+    <script type="text/javascript">
+    
+        // Specify the tweets and location / radius to search
+        var tweets = [
+            'a',             // First term
+            'Obama',             // Second term
+            '38.89,-77,100mi'     // search location and radius (lat,lon,radius)
+        ];
+
+        mapbox.auto('map', 'herwig.map-v0r9hagu', function(map, tiledata) {
+            map.centerzoom({
+                lat: 38.89,
+                lon: -77.02
+            }, 15);
+
+            map.setZoomRange(4, 17);
+
+            tweetRace.start(map);
+
+            // Add share control
+            mapbox.share().map(map).add();
+        });
+        
+    </script>
+</body>
+</html>
